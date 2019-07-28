@@ -1,6 +1,6 @@
 
 EnableDemo = True
-EnableLocal = False
+EnableLocal = True
 EnableDrive = False
 
 LocalDirectory = '~/Pictures'

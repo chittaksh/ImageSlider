@@ -12,19 +12,19 @@ import config
 class Start(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
+
+        # create a slideShow window. 
         self.window = MySlideShow(self)
         self.window.startSlideShow()
 
 class MySlideShow(tk.Toplevel):
     def __init__(self, *args, **kwargs):
         tk.Toplevel.__init__(self, *args, **kwargs)
-        #remove window decorations 
+        # Remove window decorations 
         self.overrideredirect(True)
-        #set the background to black
-        self.configure(background='black')
 
-        #save reference to photo so that garbage collection
-        #does not clear image variable in show_image()
+        # Save reference to photo so that garbage collection
+        # does not clear image variable in show_image()
         self.persistent_image = None
         self.pixNum = 0
 
@@ -60,7 +60,7 @@ class MySlideShow(tk.Toplevel):
             image = image.resize((img_w,img_h), Image.ANTIALIAS)
 
         # takes the full screen to show the image.
-        self.wm_geometry("{}x{}+{}+{}".format(scr_w,scr_h,0,0))
+        #self.wm_geometry("{}x{}+{}+{}".format(scr_w,scr_h,0,0))
         
         # create new image 
         self.persistent_image = ImageTk.PhotoImage(image)

@@ -1,6 +1,6 @@
+import os, sys
 import config
-import Sources.local as local
-import Sources.demo as demo
+import Sources.local_storage as local
 
 def getMedia():
     # Return image list. 
@@ -8,12 +8,20 @@ def getMedia():
     
     # If the application is running in demo mode
     if config.EnableDemo:
-        demoImages = demo.getImages()
+        # Location for demo directory
+        demoDirectory = os.path.expanduser(config.DemoDirectory)
+
+        # Get list of demo images.
+        demoImages = local.getImageList(demoDirectory)
         imageList.extend(demoImages)
 
-    # If the application is running in 
+    # If the application
     if config.EnableLocal:
-        localImages = local.getImages()
+        # Location for local picture directory
+        localDirectory = os.path.expanduser(config.LocalDirectory)
+
+        # Get images from local picture directory.
+        localImages = local.getImageList(localDirectory)
         imageList.extend(localImages)
     
     #if config.EnableDrive:
