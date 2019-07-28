@@ -1,14 +1,13 @@
 '''
 Python 3 slideshow using tkinter and pillow (PIL)
-Usage: python3 slideShow.py [img_directory]
+Used to show images one after the other. reads config from settings.py
 '''
 
 import tkinter as tk
 from PIL import Image, ImageTk
 import time
-import sys
-import os
-import glob
+import media_sources
+import config
 
 class Start(tk.Tk):
     def __init__(self):
@@ -32,34 +31,21 @@ class MySlideShow(tk.Toplevel):
         #save reference to photo so that garbage collection
         #does not clear image variable in show_image()
         self.persistent_image = None
-        self.imageList = []
         self.pixNum = 0
 
         #used to display as background image
         self.label = tk.Label(self)
         self.label.pack(side="top", fill="both", expand=True)
 
-        self.getImages()
-
-    def getImages(self):
-        # '''
-        # Get image directory from command line or use current directory
-        # '''
-        if len(sys.argv) == 2:
-            curr_dir = sys.argv[1]
-        else:
-            curr_dir = './Demo/'
-
-        for root, dirs, files in os.walk(curr_dir):
-            for f in files:
-                if f.endswith(".png") or f.endswith(".jpg"):
-                    img_path = os.path.join(root, f)
-                    # print(img_path)
-                    self.imageList.append(img_path)
-
-    def startSlideShow(self, delay=4): #delay in seconds
-        myimage = self.imageList[self.pixNum]
-        self.pixNum = (self.pixNum + 1) % len(self.imageList)
+        self.mediaList = media_sources.getMedia()
+    
+    def startSlideShow(self, delay=config.DelayTime): #delay in seconds
+        # Change this block of code to return something.
+        if(len(self.mediaList) <= 0):
+            self.displayMessage('Something went wrong while loading images.')
+            raise Exception('Something went wrong while loading images.')
+        myimage = self.mediaList[self.pixNum]
+        self.pixNum = (self.pixNum + 1) % len(self.mediaList)
         self.showImage(myimage)
         #its like a callback function after n seconds (cycle through pics)
         self.after(delay*1000, self.startSlideShow)
@@ -85,3 +71,6 @@ class MySlideShow(tk.Toplevel):
         # assign black background to the label.
         self.label.configure(background='black')
 
+    def displayMessage(self, message):
+        # add code to display text message
+        print(message)
