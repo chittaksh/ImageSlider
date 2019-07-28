@@ -10,7 +10,7 @@ import sys
 import os
 import glob
 
-class HiddenRoot(tk.Tk):
+class Start(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         #hackish way, essentially makes root window
@@ -56,7 +56,6 @@ class MySlideShow(tk.Toplevel):
                     img_path = os.path.join(root, f)
                     # print(img_path)
                     self.imageList.append(img_path)
-        #self.imageList = glob.glob('Demo/*.jpg')
 
     def startSlideShow(self, delay=4): #delay in seconds
         myimage = self.imageList[self.pixNum]
