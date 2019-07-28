@@ -54,7 +54,7 @@ class MySlideShow(tk.Toplevel):
             for f in files:
                 if f.endswith(".png") or f.endswith(".jpg"):
                     img_path = os.path.join(root, f)
-                    print(img_path)
+                    # print(img_path)
                     self.imageList.append(img_path)
         #self.imageList = glob.glob('Demo/*.jpg')
 
@@ -75,7 +75,7 @@ class MySlideShow(tk.Toplevel):
             ratio = min(scr_w/img_w, scr_h/img_h)
             img_w = int(img_w*ratio)
             img_h = int(img_h*ratio)
-            pilImage = pilImage.resize((img_w,img_h), Image.ANTIALIAS)
+            image = image.resize((img_w,img_h), Image.ANTIALIAS)
 
         # takes the full screen to show the image.
         self.wm_geometry("{}x{}+{}+{}".format(scr_w,scr_h,0,0))
@@ -86,6 +86,3 @@ class MySlideShow(tk.Toplevel):
         # assign black background to the label.
         self.label.configure(background='black')
 
-slideShow = HiddenRoot()
-slideShow.bind("<Escape>", lambda e: slideShow.destroy())  # exit on esc
-slideShow.mainloop()
