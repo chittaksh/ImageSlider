@@ -16,6 +16,9 @@ class Start(tk.Tk):
         # bind escape to exit i suppose.
         self.bind("<Escape>", lambda e: self.destroy())  # exit on esc
 
+        # sets the focus for any input to self.
+        self.focus_set()
+
         # go full screen on windows
         self.attributes("-fullscreen", True)
 
