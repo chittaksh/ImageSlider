@@ -46,7 +46,7 @@ class MySlideShow(tk.Frame):
 
         # create label to set the image as background
         self.label = tk.Label(self)
-        self.label.pack(side="top", fill="none", expand='no')
+        self.label.pack(side="top", fill="both", expand=1)
 
         # Add controls here in future to add images. 
     
