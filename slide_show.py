@@ -13,8 +13,12 @@ class Start(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
 
-        # go full screen
+        # go full screen on windows
         self.attributes("-fullscreen", True)
+
+        # make application full screen on unix.
+        w, h = self.winfo_screenwidth(), self.winfo_screenheight()
+        self.geometry("%dx%d+0+0" % (w, h))
 
         # set the background color to black.
         self.config(background=config.SliderBackgroundColor)
