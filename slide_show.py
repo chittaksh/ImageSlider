@@ -13,6 +13,9 @@ class Start(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
 
+        # bind escape to exit i suppose.
+        self.bind("<Escape>", lambda e: self.destroy())  # exit on esc
+
         # go full screen on windows
         self.attributes("-fullscreen", True)
 
@@ -86,6 +89,7 @@ class MySlideShow(tk.Frame):
             img_h = int(img_h*ratio)
             pilImage = pilImage.resize((img_w, img_h), Image.ANTIALIAS)
 
+        # set the background image to black on label.
         self.label.config(background=config.SliderBackgroundColor)
 
         # create new image 
