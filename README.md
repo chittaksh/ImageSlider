@@ -26,3 +26,7 @@ Add support for google drive, dropbox and one drive for image sources.\
 Add caching images.\
 Add customisations for timer.\
 Add support for video.
+
+###FAQ
+####I get an error regarding ktinker on unix based system.
+Ans: sudo apt-get install python3-tk
