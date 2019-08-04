@@ -24,7 +24,7 @@ class Start(tk.Tk):
 
         # make application full screen on unix.
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
-        self.geometry("%dx%d+0+0" % (w, h))
+        self.geometry("{}x{}+0+0".format(w, h))
 
         # set the background color to black.
         self.config(background=config.SliderBackgroundColor)
@@ -56,23 +56,24 @@ class MySlideShow(tk.Frame):
 
         # create label to set the image as background
         self.label = tk.Label(self)
-        self.label.pack(side="top", fill="both", expand=1)
 
-        # Add controls here in future to add images. 
-    
+        self.label.pack(side="top", fill="both", expand=1)
+        
     def startSlideShow(self, delay=config.DelayTime): #delay in seconds
         # change this block of code to return something.
         if(len(self.mediaList) <= 0):
             self.displayMessage('Something went wrong while loading images.')
-            raise Exception('Something went wrong while loading images.')
-        
+            return
+
         # Read the image from the array.
         myimage = self.mediaList[self.pixNum]
         self.pixNum = (self.pixNum + 1) % len(self.mediaList)
         self.showImage(myimage)
+
         # its like a callback function after n seconds (cycle through pics)
         self.after(delay*1000, self.startSlideShow)
 
+    # shows the image as background.
     def showImage(self, filename):
         pilImage = Image.open(filename)
 
@@ -97,9 +98,13 @@ class MySlideShow(tk.Frame):
 
         # create new image 
         self.persistent_image = ImageTk.PhotoImage(pilImage)
-        self.label.configure(image=self.persistent_image)
+        self.label.configure(image=self.persistent_image, width=scr_w, height=scr_h)
 
+    # If image loading fails, this shows an error.
     def displayMessage(self, message):
         # add code to display text message
-        self.label.config(text=message)
-        print(message)
+        self.label.config(text=message, fg='white', bg='black', anchor='center')
+        # print(message)
+
+
+    
