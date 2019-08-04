@@ -1,2 +1,2 @@
-python3-tk=8.6
+python3-tk==8.6
 Pillow==6.1.0
