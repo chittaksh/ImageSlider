@@ -1,1 +1,7 @@
-Pillow==6.1.0
+Kivy==1.11.1
+kivy_deps.sdl2==0.1.22 
+kivy_deps.glew==0.1.12
+kivy_deps.gstreamer==0.1.17
+docutils 
+pygments 
+pypiwin32 
