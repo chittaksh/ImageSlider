@@ -1,6 +1,6 @@
 import os, sys
 import config
-import Sources.local_storage as local
+import Sources.Local.local_storage as local
 
 def getMedia():
     # Return image list. 
