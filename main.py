@@ -1,6 +1,6 @@
-from Screens.start_screen import 
+from Screens.start_screen import ImageSlider
 
-# Find a way to get access to HDMI on raspberry pi and start slide show remotely. 
+# Find a way to get access to HDMI on raspberry pi and start slide show remotely.
 #import os
 #os.environ["KIVY_BCM_DISPMANX_ID"] = "2"
 
