@@ -1,0 +1,3 @@
+Cython
+Pillow
+Kivy==1.11.1
