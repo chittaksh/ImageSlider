@@ -23,7 +23,7 @@ Currently just works with .png and .jpg on local storage.
 
 ### Future:
 Add support for google drive, dropbox and one drive for image sources.\
-Add caching images.\
+Add image caching.\
 Add customisations for timer.\
 Add support for video.
 
